@@ -17,7 +17,6 @@ const Login = (props) => {
         email: email,
         password: pass,
       });
-      response;
       console.log(response.data.message);
       navigate("/");
     } catch (error) {
