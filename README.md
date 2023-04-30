@@ -18,6 +18,9 @@ open new terminal
 -----
 
 - cd frontend
+- npm i
+- npm i react-router-dom
+- npm i axios
 - npm run dev
 
 ------
