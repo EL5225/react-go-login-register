@@ -10,7 +10,9 @@ open terminal
 -----
 
 - git clone git@github.com:EL5225/react-go-login-register.git
-- cd ApiJwtGo
+- cd backend
+- create database mysql on your localhost
+- name database "apigojwt"
 - go run main.go
 
 -----
