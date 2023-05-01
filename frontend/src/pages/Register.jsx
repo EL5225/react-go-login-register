@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../compontens/Navbar";
 import { useState } from "react";
 import axios from "axios";
 
@@ -20,14 +19,16 @@ const Register = () => {
           email: email,
           password: pass,
         },
-        JSON.stringify(
-          { nama, email, pass },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nama,
+            email,
+            pass,
+          }),
+        }
       );
 
       console.log(response.data.message);
@@ -39,8 +40,6 @@ const Register = () => {
 
   return (
     <div>
-      <Navbar login="Log in" logreg="Register" />
-
       <div className="container mx-auto my-24">
         <div className="flex items-center justify-center">
           <div className="flex h-[50vh] md:h-[60vh] w-[90vw] md:w-[60vw] items-center shadow-lg justify-center">
