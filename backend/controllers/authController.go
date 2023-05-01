@@ -34,6 +34,7 @@ func Register(c *fiber.Ctx) error {
 }
 
 func Login(c *fiber.Ctx) error {
+	c.Set("Access-Control-Allow-Origin", "http://localhost:5173")
 	var data map[string]string
 
 	if err := c.BodyParser(&data); err != nil {
@@ -83,8 +84,9 @@ func Login(c *fiber.Ctx) error {
 }
 
 func User(c *fiber.Ctx) error {
+
 	cookie := c.Cookies("jwt")
-	t, err := jwt.ParseWithClaims(cookie, &jwt.StandardClaims{}, func(t *jwt.Token) (interface{}, error) {
+	token, err := jwt.ParseWithClaims(cookie, &jwt.StandardClaims{}, func(token *jwt.Token) (interface{}, error) {
 		return []byte(SecretKey), nil
 	})
 
@@ -94,12 +96,15 @@ func User(c *fiber.Ctx) error {
 			"message": "Tidak Terotentikasi",
 		})
 	}
-	claims := t.Claims.(*jwt.StandardClaims)
+	claims := token.Claims.(*jwt.StandardClaims)
 
 	var user models.User
 	database.DB.Where("id = ?", claims.Issuer).First(&user)
 
-	return c.JSON(user)
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"user": user,
+	})
+
 }
 func Logout(c *fiber.Ctx) error {
 	cookie := fiber.Cookie{
