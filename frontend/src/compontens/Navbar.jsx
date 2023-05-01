@@ -4,13 +4,16 @@ import { Link, useNavigate } from "react-router-dom";
 const Navbar = (props) => {
   const logout = async () => {
     try {
-      const res = await axios.post(`http://localhost:3000/api/logout`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      });
-      console.log(res);
+      const res = await axios.post(
+        "http://localhost:3000/api/logout",
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
       props.setName("");
     } catch (error) {
       console.log(error);
