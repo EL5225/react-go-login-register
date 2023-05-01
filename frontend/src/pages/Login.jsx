@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../compontens/Navbar";
 import { useState } from "react";
 import axios from "axios";
 
 const Login = (props) => {
+  const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [err, setErr] = useState("");
@@ -19,15 +19,19 @@ const Login = (props) => {
           email: email,
           password: pass,
         },
-        JSON.stringify({ email, pass }),
         {
           headers: {
             "Content-Type": "application/json",
           },
           withCredentials: true,
+          body: JSON.stringify({
+            email,
+            pass,
+          }),
         }
       );
-      console.log(response.data.message);
+
+      console.log(response);
       navigate("/");
     } catch (error) {
       const err = error.response.data.message;
@@ -38,8 +42,6 @@ const Login = (props) => {
 
   return (
     <div>
-      <Navbar login="Log in" logreg="Register" />
-
       <div className="container mx-auto my-24">
         <div className="flex items-center justify-center">
           <div className="flex h-[55vh] md:h-[45vh] w-[90vw] md:w-[60vw] items-center shadow-lg justify-center">
