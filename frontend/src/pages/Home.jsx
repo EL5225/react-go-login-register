@@ -3,6 +3,26 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Home = (props) => {
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    getName();
+  }, []);
+
+  const getName = async () => {
+    try {
+      const res = await axios.get(`http://localhost:3000/api/user/`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
+      console.log(res);
+    } catch (error) {
+      console.log(error.response.data.message);
+    }
+  };
+
   return (
     <div>
       <Navbar login="Log in" logreg="Register" />
