@@ -13,9 +13,11 @@ import (
 
 func main() {
 	database.Connect()
+
 	if err := godotenv.Load(); err != nil {
 		log.Fatal("Error Loading .env file")
 	}
+
 	port := os.Getenv("PORT")
 	app := fiber.New()
 
@@ -26,6 +28,8 @@ func main() {
 	}))
 
 	routes.InitRoute(app)
-	app.Listen(":" + port)
 
+	if err := app.Listen(":" + port); err != nil {
+		log.Fatal(err)
+	}
 }
