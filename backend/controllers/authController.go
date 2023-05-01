@@ -40,7 +40,11 @@ func Login(c *fiber.Ctx) error {
 	if err := c.BodyParser(&data); err != nil {
 		return err
 	}
-	var user models.User
+
+	user := models.User{
+		Name:  data["name"],
+		Email: data["email"],
+	}
 	database.DB.Where("email = ?", data["email"]).First(&user)
 
 	if user.Id == 0 {
