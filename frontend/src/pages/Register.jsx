@@ -13,14 +13,25 @@ const Register = () => {
   const submit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/register", {
-        name: nama,
-        email: email,
-        password: pass,
-      });
-      response;
+      const response = await axios.post(
+        "http://localhost:3000/api/register",
+        {
+          name: nama,
+          email: email,
+          password: pass,
+        },
+        JSON.stringify(
+          { nama, email, pass },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+      );
+
       console.log(response.data.message);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.log(error);
     }

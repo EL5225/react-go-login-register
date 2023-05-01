@@ -13,10 +13,20 @@ const Login = (props) => {
   const submit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3000/api/login", {
-        email: email,
-        password: pass,
-      });
+      const response = await axios.post(
+        "http://localhost:3000/api/login",
+        {
+          email: email,
+          password: pass,
+        },
+        JSON.stringify({ email, pass }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
       console.log(response.data.message);
       navigate("/");
     } catch (error) {
