@@ -31,7 +31,10 @@ const Login = (props) => {
         }
       );
 
-      console.log(response);
+      const res = await response.data.user.name;
+
+      console.log(response.data.user.name);
+      props.setName(res);
       navigate("/");
     } catch (error) {
       const err = error.response.data.message;
