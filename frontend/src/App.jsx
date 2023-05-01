@@ -32,7 +32,7 @@ const App = () => {
       <Navbar name={name} setName={setName} />
       <Routes>
         <Route path="/" exact element={<Home name={name} />} />
-        <Route path="/login" exact element={<Login name={name} />} />
+        <Route path="/login" exact element={<Login setName={setName} />} />
         <Route path="/register" exact element={<Register />} />
         <Route path="/navbar" exact element={<Navbar />} />
       </Routes>
