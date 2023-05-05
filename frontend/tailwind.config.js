@@ -1,22 +1,23 @@
 /** @type {import('tailwindcss').Config} */
-const plugin = require('tailwindcss/plugin')
+const plugin = require("tailwindcss/plugin");
 
 export default {
-  content: ["./index.html",
-            "./src/**/*.{js,ts,jsx,tsx}",],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        Quicksand: ["Merriweather", "serif"],
+      },
+    },
   },
   plugins: [
-    plugin(({addUtilities}) => {
+    plugin(({ addUtilities }) => {
       addUtilities({
-        '.brd': {
-          'border-width': '2px',
-          'border-color': 'black'
+        ".brd": {
+          "border-width": "2px",
+          "border-color": "black",
         },
-      })
-    })
+      });
+    }),
   ],
-  
-}
-
+};
