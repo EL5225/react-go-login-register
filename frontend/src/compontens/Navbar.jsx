@@ -24,10 +24,16 @@ const Navbar = (props) => {
   if (props.name === "") {
     menu = (
       <>
-        <Link to="/login" className="ease-out duration-200 hover:opacity-90">
+        <Link
+          to="/login"
+          className="ease-out duration-300 border-b border-white hover:border-b-slate-700 hover:border-b-1 text-[#19376D]"
+        >
           Login
         </Link>
-        <Link to="/register" className="ease-out duration-200 hover:opacity-90">
+        <Link
+          to="/register"
+          className="ease-out duration-300 border-b border-white hover:border-b-slate-700 hover:border-b-1 text-[#19376D]"
+        >
           Register
         </Link>
       </>
@@ -36,7 +42,7 @@ const Navbar = (props) => {
     menu = (
       <Link
         to="/"
-        className="ease-out duration-200 hover:opacity-90"
+        className="ease-out duration-300 border-b border-white hover:border-b-slate-700 hover:border-b-1 text-[#19376D]"
         onClick={logout}
       >
         Logout
@@ -46,13 +52,16 @@ const Navbar = (props) => {
 
   return (
     <>
-      <nav className="flex items-center justify-between bg-red-600 text-white shadow-md h-10 md:h-12 font-bold px-5 text-[13px] md:text-[15px] lg:text-[17px]">
+      <nav className="flex items-center justify-between h-[10vh] md:h-[13vh] font-bold px-5 text-[13px] md:text-[15px] lg:text-[17px]">
         <div>
-          <Link to="/" className="ease-out duration-200 hover:opacity-90">
+          <Link
+            to="/"
+            className="ease-out duration-200 hover:opacity-90 text-[2rem] text-[#0B2447]"
+          >
             Home
           </Link>
         </div>
-        <div className="flex justify-evenly gap-4">{menu}</div>
+        <div className="flex justify-evenly gap-4 text-[1rem]">{menu}</div>
       </nav>
     </>
   );
