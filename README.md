@@ -1,5 +1,5 @@
 # react-go-login-register
-# Collaboration with Reon - https://github.com/RianIhsan
+# Collaboration with Reon - https://github.com/RianIhsan | Rohendo - https://github.com/RohendoJ
 
 -----
 use this command :
