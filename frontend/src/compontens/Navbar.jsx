@@ -52,7 +52,7 @@ const Navbar = (props) => {
 
   return (
     <>
-      <nav className="flex items-center justify-between h-[10vh] md:h-[13vh] font-bold px-5 text-[13px] md:text-[15px] lg:text-[17px]">
+      <nav className="flex items-center justify-between h-[10vh] md:h-[13vh] font-bold px-5 text-[13px] md:text-[15px] lg:text-[17px] shadow-md ">
         <div>
           <Link
             to="/"
